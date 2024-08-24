@@ -6,9 +6,20 @@
         {
             Console.WriteLine("Greetings All!!  \nWelcome to the Houston Slots\nWhere your Chances of Winning are better \nthan Your Chances of Passing Out from the Heat\n");
 
+            const int HOU7 = 713;
+            const int HOU2 = 281;
+            const int HOU8 = 832;
+            const int HOU3 = 356;
+
             //coins for players
             int [] minas = new int [4];
-                
+            {
+                minas [0] = HOU7;
+                minas [1] = HOU2;
+                minas [2] = HOU8;
+                minas [3] = HOU3;
+            }    
+
             //    [713, 281, 832, 346]
 
             //allot coins randomly
