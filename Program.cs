@@ -38,32 +38,49 @@
             int duex = 2;
 
 
-            int[] bangers = new int[11] { 1, 2, 3, 4, 6, 7, 8, 832, 281, 713, 346 };
-            Random rngspoke = new Random();
-            int randomBangers = rngspoke.Next(0, 11);
-            int GameWheel = bangers[randomBangers];
+            if (GameCoins > 0)
+            {
 
-            //if (i = 0; 1 < x; i++)
+                int[] bangers = new int[11] { 1, 2, 3, 4, 6, 7, 8, 832, 281, 713, 346 };
+                Random rngspoke = new Random();
+                int clicks = rngspoke.Next(0, 10);
+                //int GameWheel = bangers[clicks];
 
-            int[,] slots = new int[3, 3];
+                //if (i = 0; 1 < x; i++)
 
-            //int randomnumber = 7;
+                //int[,] slots = new int[3, 3];
+                int[,] slots =    { {clicks, clicks, clicks}, 
+                                    {clicks, clicks, clicks}, 
+                                    {clicks, clicks, clicks},
 
-            //slots[0, 0] = randomnumber;
+                                   };
+
+                for (int i = 0; i < slots.GetLength(0); i++ )
+                {
+                    for (int j = 0; j < slots.GetLength(1); j++)
+                    {
+                        Console.Write(slots[i,j] + "");
+                    }
+                    Console.WriteLine();
+                };
+                //int randomnumber = 7;
+
+                //slots[0, 0] = randomnumber;
 
 
-            Console.WriteLine(slots[nulo, nulo]);
-            Console.WriteLine(slots[un, nulo]);
-            Console.WriteLine(slots[duex, nulo]);
-            Console.WriteLine("");
-            Console.WriteLine(slots[un,nulo]);
-            Console.WriteLine(slots[un,un]);
-            Console.WriteLine(slots[un,duex]);
-            Console.WriteLine("");
-            Console.WriteLine(slots[duex,nulo]);
-            Console.WriteLine(slots[duex,un]);
-            Console.WriteLine(slots[duex,duex]);
+                Console.WriteLine(slots[nulo, nulo]);
+                Console.WriteLine(slots[un, nulo]);
+                Console.WriteLine(slots[duex, nulo]);
+                Console.WriteLine("");
+                Console.WriteLine(slots[un, nulo]);
+                Console.WriteLine(slots[un, un]);
+                Console.WriteLine(slots[un, duex]);
+                Console.WriteLine("");
+                Console.WriteLine(slots[duex, nulo]);
+                Console.WriteLine(slots[duex, un]);
+                Console.WriteLine(slots[duex, duex]);
 
+            }
             //display coin count
 
             //ask how many coins to play
