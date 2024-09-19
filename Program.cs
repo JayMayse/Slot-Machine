@@ -55,11 +55,11 @@
                                     {clicks1, clicks2, clicks3},
                                    };
 
-                for (int i = 0; i < slots.GetLength(0); i++)
+                for (int row = 0; row < slots.GetLength(0); row++)
                 {
-                    for (int j = 0; j < slots.GetLength(1); j++)
+                    for (int col = 0; col < slots.GetLength(1); col++)
                     {
-                        Console.Write(slots[i, j] + "");
+                        Console.Write(slots[row, col]);
                     }
                     Console.WriteLine();
                 };
