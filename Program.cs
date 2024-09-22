@@ -16,7 +16,7 @@
 
             int[] minas = new int[4] { HOU7, HOU2, HOU8, HOU3 };
             Random rng = new Random();
-            int randomMinas = rng.Next(0, 4);
+            int randomMinas = rng.Next(0, 3);
             int GameCoins = minas[randomMinas];
 
             Console.WriteLine("You have " + GameCoins + " game coins to play with.\n\n");
@@ -50,15 +50,18 @@
                 //    }
                 //}
 
-                int[,] slots =    { {clicks1, clicks2, clicks3},
-                                    {clicks1, clicks2, clicks3},
-                                    {clicks1, clicks2, clicks3},
-                                   };
+                //int[,] slots =    { {clicks1, clicks2, clicks3},
+                //                    {clicks1, clicks2, clicks3},
+                //                    {clicks1, clicks2, clicks3},
+                //                   };
+
+                int[,] slots = new int[3, 3];
 
                 for (int row = 0; row < slots.GetLength(0); row++)
                 {
                     for (int col = 0; col < slots.GetLength(1); col++)
                     {
+                        slots[row, col] = rngspoke.Next(10);
                         Console.Write(slots[row, col]);
                     }
                     Console.WriteLine();
