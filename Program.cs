@@ -2,16 +2,6 @@
 using System.Runtime.InteropServices;
 
 Console.WriteLine("Greetings All!!  \nWelcome to the Houston Slots\nWhere your Chances of Winning are higher \nThan the Heat Index!!!\n");
-
-//char("C") = Center
-//char('r') = Rows
-//char('d') - Diagonal
-
-
-//int[] minas = new int[4] { HOU7, HOU2, HOU8, HOU3 };
-//Random rng = new Random();
-//int randomMinas = rng.Next(0, 3);
-//int GameCoins = minas[randomMinas];
 int GameCoins = 100;
 
 
@@ -44,6 +34,38 @@ if (GameCoins > 0)
                 slots[row, col] = rngspoke.Next(10);
                 Console.Write(slots[row, col]);
 
+                Random rngspoke = new Random();
+                int clicks1 = rngspoke.Next(0, 10);
+                int clicks2 = rngspoke.Next(0, 10);
+                int clicks3 = rngspoke.Next(0, 10);
+                int[,] slots = new int[3, 3];
+
+                for (int row = 0; row < slots.GetLength(0); row++)
+                {
+                    for (int col = 0; col < slots.GetLength(1); col++)
+                    {
+                        slots[row, col] = rngspoke.Next(10);
+                        Console.Write(slots[row, col]);
+
+                    }
+
+                    Console.WriteLine();
+                }
+
+                bool isWinner = true;
+
+                for (int col = 1; col < slots.GetLength(1); col++)
+                {
+
+                    if (slots[1, 0] != slots[1, col])
+                    {
+                        isWinner = false;
+                        Console.WriteLine("You have FAILED!");
+                    }
+
+
+
+                }
             }
 
             Console.WriteLine();
@@ -92,31 +114,7 @@ if (GameCoins > 0)
                     }
 
 
-                        //if (slots[0, 0] == slots[1, 1]) == slots[2, 2]);
-                        //}
-                        //bool isWinner1 = true;
-
-                        //for (int row = 1; row < slots.GetLength(1); row++)
-                        //{
-
-                        //    if (slots[1, 0] != slots[1, row])
-                        //    {
-                        //        isWinner1 = false;
-                        //        Console.WriteLine("You have FAILED!");
-                        //    }
-
-                        //}
-
-                        //
-                        //{
-                        //    //win
-                        //}
         }
 
     }
 }
-
-//void ifelse(bool v)
-//{
-//    throw new NotImplementedException();
-//    }
