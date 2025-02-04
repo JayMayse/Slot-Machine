@@ -36,7 +36,7 @@ if (GameCoins > 0)
                 slots[row, col] = rngspoke.Next(10);
                 Console.Write(slots[row, col]);
             }
-            Console.WriteLine();
+          //  Console.WriteLine();
         }
 
 
