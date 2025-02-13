@@ -83,7 +83,11 @@ while (GameCoins > 0)
                 isWinner = true;
                 //break;
             }
-
+            if (slots[0, 0] == slots[1, 1] && (slots[0, 0]) == slots[2, 2])
+            {
+                Console.WriteLine("Congratulations you won on the diaganol");
+                GameCoins += 5;
+                isWinner = true;
             //if (!isWinner)
             else
             {
