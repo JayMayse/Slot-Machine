@@ -13,7 +13,7 @@ while (GameCoins > 0)
 {
     Console.WriteLine("Which way would you like to play?\n");
     Console.WriteLine($"You currently have {GameCoins}");
-    Console.WriteLine("\nPress:\nC for Center\nL for Lines\nD for Diaganol\n");
+    Console.WriteLine("\nPress:\nC for Center Row\nL for Vertical Lines\nD for Diaganol\n");
     string choices = Console.ReadLine().ToLower();
     Console.WriteLine("");
 
@@ -38,6 +38,7 @@ while (GameCoins > 0)
             }
             Console.WriteLine();
         }
+        Console.WriteLine("");
 
 
         bool isWinner = false;
@@ -69,14 +70,15 @@ while (GameCoins > 0)
                     GameCoins += 3;
                     break;
                 }
-                if (!isWinner)
-                {
-                    Console.WriteLine("SOrry, you have failed");
-                    GameCoins -= 3;
-                }
             }
+        if (!isWinner)
+        {
+            Console.WriteLine("SOrry, you have failed");
+            GameCoins -= 3;
+        }
         else if (choices == "d")
-            if (slots[0, 0] == slots[1, 1] && (slots[0, 0]) == slots[2, 2]) 
+        {
+            if (slots[0, 0] == slots[1, 1] && (slots[0, 0]) == slots[2, 2])
             {
                 Console.WriteLine("Congratulations you won on the diaganol");
                 GameCoins += 5;
@@ -95,8 +97,8 @@ while (GameCoins > 0)
                 Console.WriteLine("SOrry, you have FAiled");
                 GameCoins -= 5;
             }
-
-            Console.WriteLine(GameCoins);
+        }
+            Console.WriteLine($"\nYou have " + GameCoins + " coins left." );
         }
 if (GameCoins > 0)
     {
