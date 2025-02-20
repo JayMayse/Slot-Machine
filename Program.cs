@@ -69,11 +69,11 @@ while (GameCoins > 0)
                     GameCoins += 3;
                     break;
                 }
-            if (!isWinner)
-            {
-                Console.WriteLine("SOrry, you have failed");
-                GameCoins -= 3;
-            }
+                if (!isWinner)
+                {
+                    Console.WriteLine("SOrry, you have failed");
+                    GameCoins -= 3;
+                }
             }
         else if (choices == "d")
             if (slots[0, 0] == slots[1, 1] && (slots[0, 0]) == slots[2, 2]) 
@@ -83,11 +83,12 @@ while (GameCoins > 0)
                 isWinner = true;
                 //break;
             }
-            if (slots[0, 0] == slots[1, 1] && (slots[0, 0]) == slots[2, 2])
+            if (slots[0, 2] == slots[1, 1] && (slots[0, 0]) == slots[2, 0])
             {
                 Console.WriteLine("Congratulations you won on the diaganol");
                 GameCoins += 5;
                 isWinner = true;
+            }
             //if (!isWinner)
             else
             {
@@ -95,8 +96,8 @@ while (GameCoins > 0)
                 GameCoins -= 5;
             }
 
-        Console.WriteLine(GameCoins);
-    }
+            Console.WriteLine(GameCoins);
+        }
 if (GameCoins > 0)
     {
         Console.WriteLine("\nDo you want to play again? (Y/N)");
