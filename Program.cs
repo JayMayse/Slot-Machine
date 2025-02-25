@@ -64,7 +64,7 @@ while (GameCoins > 0)
             for (int row = 0; row < slots.GetLength(0); row++)
             {
                 for (int col = 0; col < slots.GetLength(1); col++)
-
+                {
                     //if (slots[row, 0] == slots[row, 1l] && slots[row, 0] == slots[row, 2])
                     if (slots[0, col] == slots[row, col])
                     {
@@ -73,11 +73,12 @@ while (GameCoins > 0)
                         GameCoins += 3;
                         break;
                     }
-            }
-            if (!isWinner)
-            {
-                Console.WriteLine("SOrry, you have failed");
-                GameCoins -= 3;
+                }
+                if (!isWinner)
+                {
+                    Console.WriteLine("SOrry, you have failed");
+                    GameCoins -= 3;
+                }
             }
         else if (choices == "d")
         {
