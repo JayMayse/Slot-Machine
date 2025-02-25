@@ -63,13 +63,16 @@ while (GameCoins > 0)
         else if (choices == "l")
             for (int row = 0; row < slots.GetLength(0); row++)
             {
-                if (slots[row, 0] == slots[row, 1] && slots[row, 0] == slots[row, 2])
-                {
-                    Console.WriteLine("Congratulations you won on the lines");
-                    isWinner = true;
-                    GameCoins += 3;
-                    break;
-                }
+                for (int col = 0; col < slots.GetLength(1); col++)
+
+                    //if (slots[row, 0] == slots[row, 1l] && slots[row, 0] == slots[row, 2])
+                    if (slots[0, col] == slots[row, col])
+                    {
+                        Console.WriteLine("Congratulations you won on the lines");
+                        isWinner = true;
+                        GameCoins += 3;
+                        break;
+                    }
             }
             if (!isWinner)
             {
