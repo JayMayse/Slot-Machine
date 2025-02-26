@@ -43,13 +43,14 @@ while (GameCoins > 0)
 
         bool isWinner = false;
         if (choices == "c")
+            GameCoins -= 1;
             for (int col = 1; col < slots.GetLength(1); col++)
             {
 
                 if (slots[1, 0] == slots[1, col])
                 {
                     Console.WriteLine("Congratulations! You won the center line");
-                    GameCoins += 1;
+                    GameCoins += 2;
                     isWinner = true;
                     break;
                 }
@@ -57,42 +58,42 @@ while (GameCoins > 0)
             if (!isWinner)
             {
                 Console.WriteLine("Sorry, you failed.");
-                GameCoins -= 1;
             }
         else if (choices == "v")
+            GameCoins -= 3;
             for (int col = 0; col < slots.GetLength(0); col++)
             {
                 if (slots[0, col] == slots[1, col] && slots[0, col] == slots[2, col])
                 {
                     Console.WriteLine("Congratulations you won on the Vertical lines");
                     isWinner = true;
-                    GameCoins += 3;
+                    GameCoins += 6;
                     break;
                 }
             }
             if (!isWinner)
             {
                 Console.WriteLine("SOrry, you have failed");
-                GameCoins -= 3;
             }
         else if (choices == "h")
+            GameCoins -= 3;
             for (int row = 0; row < slots.GetLength(0); row++)
             {
                 if (slots[row, 0] == slots[row, 1] && slots[row, 0] == slots[row, 2])
                 {
                     Console.WriteLine("Congratulations you won on the Vertical lines");
                     isWinner = true;
-                    GameCoins += 3;
+                    GameCoins += 6;
                     break;
                 }
             }
             if (!isWinner)
             {
                 Console.WriteLine("SOrry, You have failed");
-                GameCoins -= 3;
             }
 
         else if (choices == "d")
+            GameCoins += 5;
         {
             if (slots[0, 0] == slots[1, 1] && (slots[0, 0]) == slots[2, 2])
             {
@@ -104,7 +105,7 @@ while (GameCoins > 0)
             if (slots[0, 2] == slots[1, 1] && (slots[0, 2]) == slots[2, 0])
             {
                 Console.WriteLine("Congratulations you won on the diaganol");
-                GameCoins += 5;
+                GameCoins += 10;
                 isWinner = true;
                 break;
             }
@@ -112,7 +113,6 @@ while (GameCoins > 0)
         if (!isWinner)
         {
             Console.WriteLine("SOrry, you have FAiled");
-            GameCoins -= 5;
         }
         Console.WriteLine($"\nYou have " + GameCoins + " coins left." );
         }
