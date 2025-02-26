@@ -13,13 +13,13 @@ while (GameCoins > 0)
 {
     Console.WriteLine("Which way would you like to play?\n");
     Console.WriteLine($"You currently have {GameCoins}");
-    Console.WriteLine("\nPress:\nC for Center Row\nL for Vertical Lines\nD for Diaganol\n");
+    Console.WriteLine("\nPress:\nC for Center Row\nV for Vertical Lines\nH for Horizontal Lines\nD for Diaganol\n");
     string choices = Console.ReadLine().ToLower();
     Console.WriteLine("");
 
-    if (choices != "c" && choices != "d" && choices != "l")
+    if (choices != "c" && choices != "d" && choices != "v" && choices != "h")
     {
-        Console.WriteLine("Please choose between C, L, or D.");
+        Console.WriteLine("Please choose between C, V, H, or D.");
     }
     else
     {
@@ -53,33 +53,45 @@ while (GameCoins > 0)
                     isWinner = true;
                     break;
                 }
-                //if (!isWinner)
-                else
+            }
+            if (!isWinner)
+            {
+                Console.WriteLine("Sorry, you failed.");
+                GameCoins -= 1;
+            }
+        else if (choices == "v")
+            for (int col = 0; col < slots.GetLength(0); col++)
+            {
+                if (slots[0, col] == slots[1, col] && slots[0, col] == slots[2, col])
                 {
-                    Console.WriteLine("Sorry, you failed.");
-                    GameCoins -= 1;
+                    Console.WriteLine("Congratulations you won on the Vertical lines");
+                    isWinner = true;
+                    GameCoins += 3;
+                    break;
                 }
             }
-        else if (choices == "l")
+            if (!isWinner)
+            {
+                Console.WriteLine("SOrry, you have failed");
+                GameCoins -= 3;
+            }
+        else if (choices == "h")
             for (int row = 0; row < slots.GetLength(0); row++)
             {
-                for (int col = 0; col < slots.GetLength(1); col++)
+                if (slots[row, 0] == slots[row, 1] && slots[row, 0] == slots[row, 2])
                 {
-                    //if (slots[row, 0] == slots[row, 1l] && slots[row, 0] == slots[row, 2])
-                    if (slots[0, col] == slots[row, col])
-                    {
-                        Console.WriteLine("Congratulations you won on the lines");
-                        isWinner = true;
-                        GameCoins += 3;
-                        break;
-                    }
-                }
-                if (!isWinner)
-                {
-                    Console.WriteLine("SOrry, you have failed");
-                    GameCoins -= 3;
+                    Console.WriteLine("Congratulations you won on the Vertical lines");
+                    isWinner = true;
+                    GameCoins += 3;
+                    break;
                 }
             }
+            if (!isWinner)
+            {
+                Console.WriteLine("SOrry, You have failed");
+                GameCoins -= 3;
+            }
+
         else if (choices == "d")
         {
             if (slots[0, 0] == slots[1, 1] && (slots[0, 0]) == slots[2, 2])
@@ -87,22 +99,22 @@ while (GameCoins > 0)
                 Console.WriteLine("Congratulations you won on the diaganol");
                 GameCoins += 5;
                 isWinner = true;
-                //break;
+                break;
             }
             if (slots[0, 2] == slots[1, 1] && (slots[0, 2]) == slots[2, 0])
             {
                 Console.WriteLine("Congratulations you won on the diaganol");
                 GameCoins += 5;
                 isWinner = true;
-            }
-            if (!isWinner)
-            // else
-            {
-                Console.WriteLine("SOrry, you have FAiled");
-                GameCoins -= 5;
+                break;
             }
         }
-            Console.WriteLine($"\nYou have " + GameCoins + " coins left." );
+        if (!isWinner)
+        {
+            Console.WriteLine("SOrry, you have FAiled");
+            GameCoins -= 5;
+        }
+        Console.WriteLine($"\nYou have " + GameCoins + " coins left." );
         }
 if (GameCoins > 0)
     {
