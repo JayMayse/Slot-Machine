@@ -43,23 +43,22 @@ while (GameCoins > 0)
 
         bool isWinner = false;
         if (choices == "c")
+        {
             GameCoins -= 1;
-            for (int col = 1; col < slots.GetLength(1); col++)
+            if (slots[1, 0] == slots[1, 1] && slots[1, 0] == slots[1, 2])
             {
-
-                if (slots[1, 0] == slots[1, col])
-                {
-                    Console.WriteLine("Congratulations! You won the center line");
-                    GameCoins += 2;
-                    isWinner = true;
-                    break;
-                }
+                Console.WriteLine("Congratulations! You won the center line");
+                GameCoins += 2;
+                isWinner = true;
+                break;
             }
             if (!isWinner)
             {
                 Console.WriteLine("Sorry, you failed.");
             }
+        }
         else if (choices == "v")
+        {
             GameCoins -= 3;
             for (int col = 0; col < slots.GetLength(0); col++)
             {
@@ -75,7 +74,9 @@ while (GameCoins > 0)
             {
                 Console.WriteLine("SOrry, you have failed");
             }
+        }
         else if (choices == "h")
+        {
             GameCoins -= 3;
             for (int row = 0; row < slots.GetLength(0); row++)
             {
@@ -91,14 +92,14 @@ while (GameCoins > 0)
             {
                 Console.WriteLine("SOrry, You have failed");
             }
-
+        }
         else if (choices == "d")
-            GameCoins += 5;
         {
+            GameCoins -= 5;
             if (slots[0, 0] == slots[1, 1] && (slots[0, 0]) == slots[2, 2])
             {
                 Console.WriteLine("Congratulations you won on the diaganol");
-                GameCoins += 5;
+                GameCoins += 10;
                 isWinner = true;
                 break;
             }
@@ -109,13 +110,13 @@ while (GameCoins > 0)
                 isWinner = true;
                 break;
             }
-        }
-        if (!isWinner)
-        {
-            Console.WriteLine("SOrry, you have FAiled");
+            if (!isWinner)
+            {
+                Console.WriteLine("SOrry, you have FAiled");
+            }
         }
         Console.WriteLine($"\nYou have " + GameCoins + " coins left." );
-        }
+    }
 if (GameCoins > 0)
     {
         Console.WriteLine("\nDo you want to play again? (Y/N)");
