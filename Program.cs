@@ -6,8 +6,8 @@ int GameCoins = 100;
 
 
 Console.WriteLine("You have " + GameCoins + " game coins to start with.\n\n");
-Console.WriteLine("You can play center line for 1\nYou can play all 3 lines for 3\nYou can play the diaganol for 5\n");
 Console.WriteLine("*** How to Win ***");
+Console.WriteLine("You can play center line for 1\nYou can play the 3 vertical or 3 horizontal lines for 3\nYou can play both diaganols for 5\n");
 
 while (GameCoins > 0)
 {
