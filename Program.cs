@@ -10,19 +10,20 @@ int GameCoins = BUCKETS;
 Console.WriteLine("You have " + GameCoins + " game coins to start with.\n\n");
 Console.WriteLine("*** How to Win ***");
 Console.WriteLine("You can play center line for 1\nYou can play the 3 vertical or 3 horizontal lines for 3\nYou can play both diaganols for 5\n");
+Console.WriteLine("\nPress:\nC for Center Row (1 coin)\nV for Vertical Lines (3 coins)\nH for Horizontal Lines (3 coins)\nD for Diagonal (5 coins)\n");
 string choices = Console.ReadLine().ToLower();
-Console.WriteLine("");
-Console.WriteLine("How big of a grid do you want to work with?  PLease enter 3, 5, or 7");
-int grid = Console.Readline("");
-if (grid != 3 or grid != 5 or grid != 7)
+if (choices != "c" && choices != "d" && choices != "v" && choices != "h")
 {
-    Console.WriteLine("Please choose3, 5, or 7.");
+    Console.WriteLine("Please choose between C, V, H, or D.");
 }
+//Console.WriteLine("");
+//grid = int grid (square);
 else
-{ 
-    if (choices != "c" && choices != "d" && choices != "v" && choices != "h")
+{
+    Console.Write("\nHow big of a grid do you want to work with? (3, 5, or 7): ");
+    if (!int.TryParse(Console.ReadLine(), out int grid) || (grid != 3 && grid != 5 && grid != 7))
     {
-        Console.WriteLine("Please choose between C, V, H, or D.");
+        Console.WriteLine("Invalid grid size! Please enter 3, 5, or 7.");
     }
     else
     {
