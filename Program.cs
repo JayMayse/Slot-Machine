@@ -42,10 +42,20 @@ while (true)
 
     bool isWinner = false;
 
-    if (choices == "c")
-    {
+    if(choices == "c")
+{
         GameCoins -= 1;
-        if (slots[1, 0] == slots[1, 1] && slots[1, 0] == slots[1, 2])
+        int midRow = grid / 2;
+        bool center = true;
+        for (int col = 1; col < grid; col++)
+        {
+            if (slots[midRow, col] != slots[midRow, 0])
+            {
+                center = false;
+                break;
+            }
+        }
+        if (center)
         {
             Console.WriteLine("Congratulations! You won the center line");
             GameCoins += 2;
