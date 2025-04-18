@@ -1,4 +1,4 @@
-﻿using System.Diagnostics;
+using System.Diagnostics;
 using System.Runtime.InteropServices;
 
 Console.WriteLine("Greetings All!!  \nWelcome to the Houston Slots\nWhere your Chances of Winning are higher \nThan the Heat Index!!!\n");
@@ -13,7 +13,7 @@ while (true)
     Console.WriteLine("You can play center line for 1\nYou can play the 3 vertical or 3 horizontal lines for 3\nYou can play both diagonals for 5\n");
     Console.WriteLine("\nPress:\nC for Center Row (1 coin)\nV for Vertical Lines (3 coins)\nH for Horizontal Lines (3 coins)\nD for Diagonal (5 coins)\n");
 
-     string choices = Console.ReadLine().ToLower();
+    string choices = Console.ReadLine().ToLower();
     if (choices != "c" && choices != "d" && choices != "v" && choices != "h")
     {
         Console.WriteLine("Please choose between C, V, H, or D.");
@@ -35,7 +35,6 @@ while (true)
         for (int col = 0; col < grid; col++)
         {
             slots[row, col] = rngspoke.Next(10);
-            //slots[row, col] = 1;
             Console.Write(slots[row, col]);
         }
         Console.WriteLine();
@@ -43,20 +42,10 @@ while (true)
 
     bool isWinner = false;
 
-    if(choices == "c")
-{
+    if (choices == "c")
+    {
         GameCoins -= 1;
-        int midRow = grid / 2;
-        bool center = true;
-        for (int col = 1; col < grid; col++)
-        {
-            if (slots[midRow, col] != slots[midRow, 0])
-            {
-                center = false;
-                break;
-            }
-        }
-        if (center)
+        if (slots[1, 0] == slots[1, 1] && slots[1, 0] == slots[1, 2])
         {
             Console.WriteLine("Congratulations! You won the center line");
             GameCoins += 2;
@@ -66,20 +55,11 @@ while (true)
     else if (choices == "v")
     {
         GameCoins -= 3;
-        for (int col = 0; col < grid; col++)
+        for (int col = 0; col < 3; col++)
         {
-            bool colMatch = true;
-            for (int row = 1; row < grid; row++)
+            if (slots[0, col] == slots[1, col] && slots[0, col] == slots[2, col])
             {
-                if (slots[row, col] != slots[0, col])
-                {
-                    colMatch = false;
-                    break;
-                }
-            }
-            if (colMatch)
-            {
-                Console.WriteLine("Congratulations! You won on a vertical line");
+                Console.WriteLine("Congratulations! You won on the Vertical lines");
                 GameCoins += 6;
                 isWinner = true;
                 break;
@@ -89,27 +69,17 @@ while (true)
     else if (choices == "h")
     {
         GameCoins -= 3;
-        for (int row = 0; row < grid; row++)
+        for (int row = 0; row < 3; row++)
         {
-            bool rowMatch = true;
-            for (int col = 1; col < grid; col++)
+            if (slots[row, 0] == slots[row, 1] && slots[row, 0] == slots[row, 2])
             {
-                if (slots[row, col] != slots[row, 0])
-                {
-                    rowMatch = false;
-                    break;
-                }
-            }
-            if (rowMatch)
-            {
-                Console.WriteLine("Congratulations! You won on a horizontal line");
+                Console.WriteLine("Congratulations! You won on the Horizontal lines");
                 GameCoins += 6;
                 isWinner = true;
                 break;
             }
         }
     }
-
     else if (choices == "d")
     {
         GameCoins -= 5;
