@@ -113,13 +113,27 @@ while (true)
     else if (choices == "d")
     {
         GameCoins -= 5;
-        if (slots[0, 0] == slots[1, 1] && slots[0, 0] == slots[2, 2])
+        bool LeftDiag = true;
+        for (int i = 1; i < grid; i++)
         {
-            Console.WriteLine("Congratulations! You won on the diagonal");
-            GameCoins += 10;
-            isWinner = true;
+            if (slots[i, i] != slots[0, 0])
+            {
+                LeftDiag = false;
+                break;
+            }
         }
-        else if (slots[0, 2] == slots[1, 1] && slots[0, 2] == slots[2, 0])
+
+        bool RightDiag = true;
+        for (int i = 1; i < grid; i++)
+        {
+            if (slots[i, grid - 1 - i] != slots[0, grid - 1])
+            {
+                RightDiag = false;
+                break;
+            }
+        }
+
+        if (LeftDiag || RightDiag)
         {
             Console.WriteLine("Congratulations! You won on the diagonal");
             GameCoins += 10;
@@ -127,12 +141,7 @@ while (true)
         }
     }
 
-    if (!isWinner)
-    {
-        Console.WriteLine("Sorry, you failed.");
-    }
 
-    Console.WriteLine($"\nYou have {GameCoins} coins left.");
 
     if (GameCoins <= 0)
     {
