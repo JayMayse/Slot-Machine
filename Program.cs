@@ -4,18 +4,22 @@ using System.Runtime.InteropServices;
 Console.WriteLine("Greetings All!!  \nWelcome to the Houston Slots\nWhere your Chances of Winning are higher \nThan the Heat Index!!!\n");
 
 const int BUCKETS = 100;
+const string CENTER_ROW_WIN = "c";
+const string VERTICAL_COLUMN_WIN = "v";
+const string DIAGONOL_WIN = "d";
+const string HORIZONTAL_ROW_WIN = "h";
 int gameCoins = BUCKETS;
-const int tres = 3;
-const int cinco = 5;
-const int sete = 7;
-const int deca = 10;
-const int centMinus = 1;
-const int centPlus = 2;
-const int vertMinus = 3;
-const int vertPlus = 6;
-const int diagMinus = 5;
-const int diagPlus = 10;
-const int nullCoin = 0;
+const int TRES = 3;
+const int CINCO = 5;
+const int SETE = 7;
+const int DECA = 10;
+const int CENTMINUS = 1;
+const int CENTPLUS = 2;
+const int VERTMINUS = 3;
+const int VERTPLUS = 6;
+const int DIAGMINUS = 5;
+const int DIAGPLUS = 10;
+const int NULLCOIN = 0;
 
 
 while (true)
@@ -26,14 +30,14 @@ while (true)
     Console.WriteLine("\nPress:\nC for Center Row (1 coin)\nV for Vertical Lines (3 coins)\nH for Horizontal Lines (3 coins)\nD for Diagonal (5 coins)\n");
 
      string choices = Console.ReadLine().ToLower();
-    if (choices != "c" && choices != "d" && choices != "v" && choices != "h")
+    if (choices != CENTER_ROW_WIN && choices != DIAGONOL_WIN && choices != VERTICAL_COLUMN_WIN && choices != HORIZONTAL_ROW_WIN)
     {
         Console.WriteLine("Please choose between C, V, H, or D.");
         continue;
     }
 
     Console.Write("\nHow big of a grid do you want to work with? (3, 5, or 7): ");
-    if (!int.TryParse(Console.ReadLine(), out int grid) || (grid != tres && grid != cinco && grid != sete))
+    if (!int.TryParse(Console.ReadLine(), out int grid) || (grid != TRES && grid != CINCO && grid != SETE))
     {
         Console.WriteLine("Invalid grid size! Please enter 3, 5, or 7.");
         continue;
@@ -46,8 +50,8 @@ while (true)
     {
         for (int col = 0; col < grid; col++)
         {
-            slots[row, col] = rngspoke.Next(deca);
-            //slots[row, col] = 1;
+            //slots[row, col] = rngspoke.Next(DECA);
+            slots[row, col] = 1;
             Console.Write(slots[row, col]);
         }
         Console.WriteLine();
@@ -55,9 +59,9 @@ while (true)
 
     bool isWinner = false;
 
-    if(choices == "c")
+    if(choices == CENTER_ROW_WIN)
 {
-        gameCoins -= centMinus;
+        gameCoins -= CENTMINUS;
         int midRow = grid / 2;
         bool center = true;
         for (int col = 1; col < grid; col++)
@@ -70,14 +74,14 @@ while (true)
         }
         if (center)
         {
-            Console.WriteLine("Congratulations! You won the center line");
-            gameCoins += centPlus;
+            Console.WriteLine("Congratulations! You won the center row!");
+            gameCoins += CENTPLUS;
             isWinner = true;
         }
     }
-    else if (choices == "v")
+    else if (choices == VERTICAL_COLUMN_WIN)
     {
-        gameCoins -= vertMinus;
+        gameCoins -= VERTMINUS;
         for (int col = 0; col < grid; col++)
         {
             bool colMatch = true;
@@ -91,16 +95,16 @@ while (true)
             }
             if (colMatch)
             {
-                Console.WriteLine("Congratulations! You won on a vertical line");
-                gameCoins += vertPlus;
+                Console.WriteLine("Congratulations! You won on a vertical line!");
+                gameCoins += VERTPLUS;
                 isWinner = true;
                 break;
             }
         }
     }
-    else if (choices == "h")
+    else if (choices == HORIZONTAL_ROW_WIN)
     {
-        gameCoins -= vertMinus;
+        gameCoins -= VERTMINUS;
         for (int row = 0; row < grid; row++)
         {
             bool rowMatch = true;
@@ -114,17 +118,17 @@ while (true)
             }
             if (rowMatch)
             {
-                Console.WriteLine("Congratulations! You won on a horizontal line");
-                gameCoins += vertPlus;
+                Console.WriteLine("Congratulations! You won on a horizontal row!");
+                gameCoins += VERTPLUS;
                 isWinner = true;
                 break;
             }
         }
     }
 
-    else if (choices == "d")
+    else if (choices == DIAGONOL_WIN)
     {
-        gameCoins -= diagMinus;
+        gameCoins -= DIAGMINUS;
         bool leftDiag = true;
         for (int i = 1; i < grid; i++)
         {
@@ -147,15 +151,15 @@ while (true)
 
         if (leftDiag || rightDiag)
         {
-            Console.WriteLine("Congratulations! You won on the diagonal");
-            gameCoins += diagPlus;
+            Console.WriteLine("Congratulations! You won on the diagonal column!");
+            gameCoins += DIAGPLUS;
             isWinner = true;
         }
     }
 
 
 
-    if (gameCoins <= nullCoin)
+    if (gameCoins <= NULLCOIN)
     {
         Console.WriteLine("You're out of coins. Thanks for playing!");
         break;
